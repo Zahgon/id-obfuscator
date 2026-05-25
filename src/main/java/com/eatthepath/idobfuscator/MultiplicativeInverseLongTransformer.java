@@ -11,6 +11,7 @@ import java.math.BigInteger;
 public class MultiplicativeInverseLongTransformer implements LongTransformer {
 
     private final long multiplier;
+
     private final transient long inverse;
 
     /**
@@ -26,9 +27,7 @@ public class MultiplicativeInverseLongTransformer implements LongTransformer {
         } else if (multiplier % 2 == 0) {
             throw new IllegalArgumentException("Multiplier must not be divisible by 2");
         }
-
         this.multiplier = multiplier;
-
         this.inverse = getMultiplicativeInverse(this.multiplier);
     }
 
@@ -41,7 +40,7 @@ public class MultiplicativeInverseLongTransformer implements LongTransformer {
      */
     @Override
     public long transformLong(final long l) {
-        return l * this.multiplier;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -54,41 +53,36 @@ public class MultiplicativeInverseLongTransformer implements LongTransformer {
      */
     @Override
     public long reverseTransformLong(final long l) {
-        return l * this.inverse;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static long getMultiplicativeInverse(final long multiplier) {
         BigInteger s = BigInteger.ZERO, previousS = BigInteger.ONE;
         BigInteger t = BigInteger.ONE, previousT = BigInteger.ZERO;
         BigInteger r = BigInteger.valueOf(multiplier), previousR = BigInteger.ONE.shiftLeft(Long.SIZE);
-
         while (!BigInteger.ZERO.equals(r)) {
             final BigInteger q = previousR.divide(r);
-
             {
                 final BigInteger tempR = r;
                 r = previousR.subtract(q.multiply(r));
                 previousR = tempR;
             }
-
             {
                 final BigInteger tempS = s;
                 s = previousS.subtract(q.multiply(s));
                 previousS = tempS;
             }
-
             {
                 final BigInteger tempT = t;
                 t = previousT.subtract(q.multiply(t));
                 previousT = tempT;
             }
         }
-
         return previousT.longValue();
     }
 
     @Override
     public String toString() {
-        return String.format("MultiplicativeInverseLongTransformer [multiplier=%d]", this.multiplier);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

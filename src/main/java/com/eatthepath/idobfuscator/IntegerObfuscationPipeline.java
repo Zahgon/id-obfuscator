@@ -15,6 +15,7 @@ import java.util.Objects;
 public class IntegerObfuscationPipeline {
 
     private final IntegerTransformer[] transformers;
+
     private final IntegerCodec codec;
 
     /**
@@ -27,7 +28,6 @@ public class IntegerObfuscationPipeline {
      */
     public IntegerObfuscationPipeline(final IntegerCodec codec, final IntegerTransformer... transformers) {
         Objects.requireNonNull(codec, "Codec must not be null");
-
         this.transformers = transformers;
         this.codec = codec;
     }
@@ -45,13 +45,7 @@ public class IntegerObfuscationPipeline {
      * @throws IllegalArgumentException if the given integer cannot be expressed with this pipeline's bit size
      */
     public String obfuscate(final int i) {
-        int encodedInteger = i;
-
-        for (final IntegerTransformer obfuscator : this.transformers) {
-            encodedInteger = obfuscator.transformInteger(encodedInteger);
-        }
-
-        return this.codec.encodeIntegerAsString(encodedInteger);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,12 +57,6 @@ public class IntegerObfuscationPipeline {
      * @return the deobfuscated integer represented by the given string
      */
     public int deobfuscate(final String string) {
-        int decodedInteger = this.codec.decodeStringAsInteger(string);
-
-        for (int i = this.transformers.length - 1; i >= 0; i--) {
-            decodedInteger = this.transformers[i].reverseTransformInteger(decodedInteger);
-        }
-
-        return decodedInteger;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

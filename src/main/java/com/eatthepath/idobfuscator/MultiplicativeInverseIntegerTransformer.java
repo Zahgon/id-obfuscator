@@ -9,6 +9,7 @@ package com.eatthepath.idobfuscator;
 public class MultiplicativeInverseIntegerTransformer implements IntegerTransformer {
 
     private final int multiplier;
+
     private final transient int inverse;
 
     /**
@@ -24,9 +25,7 @@ public class MultiplicativeInverseIntegerTransformer implements IntegerTransform
         } else if (multiplier % 2 == 0) {
             throw new IllegalArgumentException("Multiplier must not be divisible by 2");
         }
-
         this.multiplier = multiplier;
-
         this.inverse = getMultiplicativeInverse(this.multiplier);
     }
 
@@ -39,7 +38,7 @@ public class MultiplicativeInverseIntegerTransformer implements IntegerTransform
      */
     @Override
     public int transformInteger(final int i) {
-        return i * this.multiplier;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -52,41 +51,36 @@ public class MultiplicativeInverseIntegerTransformer implements IntegerTransform
      */
     @Override
     public int reverseTransformInteger(final int i) {
-        return i * this.inverse;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static int getMultiplicativeInverse(final int multiplier) {
         long s = 0, previousS = 1;
         long t = 1, previousT = 0;
         long r = multiplier, previousR = 1L << Integer.SIZE;
-
         while (r != 0) {
             final long q = previousR / r;
-
             {
                 final long tempR = r;
                 r = previousR - (q * r);
                 previousR = tempR;
             }
-
             {
                 final long tempS = s;
                 s = previousS - (q * s);
                 previousS = tempS;
             }
-
             {
                 final long tempT = t;
                 t = previousT - (q * t);
                 previousT = tempT;
             }
         }
-
         return (int) previousT;
     }
 
     @Override
     public String toString() {
-        return String.format("MultiplicativeInverseIntegerTransformer [multiplier=%d]", this.multiplier);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

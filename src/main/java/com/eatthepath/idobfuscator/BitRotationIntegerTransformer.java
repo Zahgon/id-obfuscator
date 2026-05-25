@@ -8,6 +8,7 @@ package com.eatthepath.idobfuscator;
 public class BitRotationIntegerTransformer implements IntegerTransformer {
 
     private final long originalDistance;
+
     private transient final int effectiveDistance;
 
     /**
@@ -17,13 +18,12 @@ public class BitRotationIntegerTransformer implements IntegerTransformer {
      */
     public BitRotationIntegerTransformer(final int distance) {
         this.originalDistance = distance;
-
         // Normalize the rotation distance to the range of [0, 32).
         this.effectiveDistance = (int) ((distance % Integer.SIZE) + (distance < 0 ? Integer.SIZE : 0));
     }
 
     int getEffectiveDistance() {
-        return this.effectiveDistance;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -35,7 +35,7 @@ public class BitRotationIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int transformInteger(final int i) {
-        return (i << this.effectiveDistance) | (i >>> (Integer.SIZE - this.effectiveDistance));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -47,11 +47,11 @@ public class BitRotationIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int reverseTransformInteger(final int i) {
-        return (i >>> this.effectiveDistance) | (i << (Integer.SIZE - this.effectiveDistance));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return String.format("BitRotationIntegerTransformer [distance=%d]", this.originalDistance);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -23,7 +23,7 @@ public class OffsetLongTransformer implements LongTransformer {
      */
     @Override
     public long transformLong(final long i) {
-        return i + this.offset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -35,11 +35,11 @@ public class OffsetLongTransformer implements LongTransformer {
      */
     @Override
     public long reverseTransformLong(final long i) {
-        return i - this.offset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return String.format("OffsetLongTransformer [offset=%d]", this.offset);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -22,7 +22,7 @@ public class XorIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int transformInteger(final int i) {
-        return i ^ this.mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -34,11 +34,11 @@ public class XorIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int reverseTransformInteger(final int i) {
-        return i ^ this.mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return String.format("XorLongTransformer [mask=%x]", this.mask);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

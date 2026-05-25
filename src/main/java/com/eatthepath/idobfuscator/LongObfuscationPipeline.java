@@ -13,7 +13,9 @@ import java.util.Objects;
  * @author <a href="https://github.com/jchambers">Jon Chambers</a>
  */
 public class LongObfuscationPipeline {
+
     private final LongTransformer[] transformers;
+
     private final LongCodec codec;
 
     /**
@@ -28,7 +30,6 @@ public class LongObfuscationPipeline {
      */
     public LongObfuscationPipeline(final LongCodec codec, final LongTransformer... transformers) {
         Objects.requireNonNull(codec, "Codec must not be null");
-
         this.transformers = transformers;
         this.codec = codec;
     }
@@ -46,13 +47,7 @@ public class LongObfuscationPipeline {
      * @throws IllegalArgumentException if the given integer cannot be expressed with this pipeline's bit size
      */
     public String obfuscate(final long i) {
-        long encodedInteger = i;
-
-        for (final LongTransformer obfuscator : this.transformers) {
-            encodedInteger = obfuscator.transformLong(encodedInteger);
-        }
-
-        return this.codec.encodeLongAsString(encodedInteger);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -64,12 +59,6 @@ public class LongObfuscationPipeline {
      * @return the deobfuscated integer represented by the given string
      */
     public long deobfuscate(final String string) {
-        long decodedInteger = this.codec.decodeStringAsLong(string);
-
-        for (int i = this.transformers.length - 1; i >= 0; i--) {
-            decodedInteger = this.transformers[i].reverseTransformLong(decodedInteger);
-        }
-
-        return decodedInteger;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

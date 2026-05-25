@@ -28,7 +28,7 @@ public class OffsetIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int transformInteger(final int i) {
-        return i + this.offset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -40,11 +40,11 @@ public class OffsetIntegerTransformer implements IntegerTransformer {
      */
     @Override
     public int reverseTransformInteger(final int i) {
-        return i - this.offset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return String.format("OffsetIntegerTransformer [offset=%d]", this.offset);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
